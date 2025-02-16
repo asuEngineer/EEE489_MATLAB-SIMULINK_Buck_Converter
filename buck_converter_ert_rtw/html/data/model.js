@@ -1,0 +1,1 @@
+var modelInfo = {model:"buck_converter"};var modelHierarchy=[{model:"buck_converter",relativePath:"_internal.html",parent:"null"},];var AddCode = true;var ProtectedModel = false;
