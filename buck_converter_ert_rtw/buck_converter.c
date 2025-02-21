@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter".
  *
- * Model version              : 1.0
+ * Model version              : 1.2
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Sun Feb 16 13:39:35 2025
+ * C source code generated on : Fri Feb 21 13:32:16 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
