@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter_w_feedback".
  *
- * Model version              : 1.4
+ * Model version              : 1.5
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Fri Feb 21 14:07:56 2025
+ * C source code generated on : Wed Feb 26 20:06:48 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -42,36 +42,24 @@ RT_MODEL_buck_converter_w_fee_T *const buck_converter_w_feedback_M =
   &buck_converter_w_feedback_M_;
 
 /*
- * This function updates continuous states using the ODE3 fixed-step
+ * This function updates continuous states using the ODE4 fixed-step
  * solver algorithm
  */
 static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
 {
-  /* Solver Matrices */
-  static const real_T rt_ODE3_A[3] = {
-    1.0/2.0, 3.0/4.0, 1.0
-  };
-
-  static const real_T rt_ODE3_B[3][3] = {
-    { 1.0/2.0, 0.0, 0.0 },
-
-    { 0.0, 3.0/4.0, 0.0 },
-
-    { 2.0/9.0, 1.0/3.0, 4.0/9.0 }
-  };
-
   time_T t = rtsiGetT(si);
   time_T tnew = rtsiGetSolverStopTime(si);
   time_T h = rtsiGetStepSize(si);
   real_T *x = rtsiGetContStates(si);
-  ODE3_IntgData *id = (ODE3_IntgData *)rtsiGetSolverData(si);
+  ODE4_IntgData *id = (ODE4_IntgData *)rtsiGetSolverData(si);
   real_T *y = id->y;
   real_T *f0 = id->f[0];
   real_T *f1 = id->f[1];
   real_T *f2 = id->f[2];
-  real_T hB[3];
+  real_T *f3 = id->f[3];
+  real_T temp;
   int_T i;
-  int_T nXc = 1;
+  int_T nXc = 2;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
 
   /* Save the state values at time t in y, we'll use x as ynew. */
@@ -83,42 +71,43 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   rtsiSetdX(si, f0);
   buck_converter_w_feedback_derivatives();
 
-  /* f(:,2) = feval(odefile, t + hA(1), y + f*hB(:,1), args(:)(*)); */
-  hB[0] = h * rt_ODE3_B[0][0];
+  /* f1 = f(t + (h/2), y + (h/2)*f0) */
+  temp = 0.5 * h;
   for (i = 0; i < nXc; i++) {
-    x[i] = y[i] + (f0[i]*hB[0]);
+    x[i] = y[i] + (temp*f0[i]);
   }
 
-  rtsiSetT(si, t + h*rt_ODE3_A[0]);
+  rtsiSetT(si, t + temp);
   rtsiSetdX(si, f1);
   buck_converter_w_feedback_step();
   buck_converter_w_feedback_derivatives();
 
-  /* f(:,3) = feval(odefile, t + hA(2), y + f*hB(:,2), args(:)(*)); */
-  for (i = 0; i <= 1; i++) {
-    hB[i] = h * rt_ODE3_B[1][i];
-  }
-
+  /* f2 = f(t + (h/2), y + (h/2)*f1) */
   for (i = 0; i < nXc; i++) {
-    x[i] = y[i] + (f0[i]*hB[0] + f1[i]*hB[1]);
+    x[i] = y[i] + (temp*f1[i]);
   }
 
-  rtsiSetT(si, t + h*rt_ODE3_A[1]);
   rtsiSetdX(si, f2);
   buck_converter_w_feedback_step();
   buck_converter_w_feedback_derivatives();
 
-  /* tnew = t + hA(3);
-     ynew = y + f*hB(:,3); */
-  for (i = 0; i <= 2; i++) {
-    hB[i] = h * rt_ODE3_B[2][i];
-  }
-
+  /* f3 = f(t + h, y + h*f2) */
   for (i = 0; i < nXc; i++) {
-    x[i] = y[i] + (f0[i]*hB[0] + f1[i]*hB[1] + f2[i]*hB[2]);
+    x[i] = y[i] + (h*f2[i]);
   }
 
   rtsiSetT(si, tnew);
+  rtsiSetdX(si, f3);
+  buck_converter_w_feedback_step();
+  buck_converter_w_feedback_derivatives();
+
+  /* tnew = t + h
+     ynew = y + (h/6)*(f0 + 2*f1 + 2*f2 + 2*f3) */
+  temp = h / 6.0;
+  for (i = 0; i < nXc; i++) {
+    x[i] = y[i] + temp*(f0[i] + 2.0*f1[i] + 2.0*f2[i] + f3[i]);
+  }
+
   rtsiSetSimTimeStep(si,MAJOR_TIME_STEP);
 }
 
@@ -144,7 +133,6 @@ real_T rt_roundd_snf(real_T u)
 void buck_converter_w_feedback_step(void)
 {
   real_T u0;
-  real32_T rtb_Sum;
   uint16_T b_varargout_1;
   uint8_T tmp_0;
   boolean_T tmp;
@@ -173,25 +161,30 @@ void buck_converter_w_feedback_step(void)
   if (tmp) {
     /* MATLABSystem: '<Root>/Analog Input' */
     buck_converter_w_feedback_DW.obj_l.AnalogInDriverObj.MW_ANALOGIN_HANDLE =
-      MW_AnalogIn_GetHandle(26U);
+      MW_AnalogIn_GetHandle(28U);
     MW_AnalogInSingle_ReadResult
       (buck_converter_w_feedback_DW.obj_l.AnalogInDriverObj.MW_ANALOGIN_HANDLE,
        &b_varargout_1, MW_ANALOGIN_UINT16);
 
+    /* Gain: '<Root>/digital in to err' incorporates:
+     *  MATLABSystem: '<Root>/Analog Input'
+     * */
+    buck_converter_w_feedback_B.digitalintoerr = (uint32_T)
+      buck_converter_w_feedback_P.digitalintoerr_Gain * b_varargout_1;
+
     /* Sum: '<S1>/Sum' incorporates:
      *  Constant: '<Root>/Vref'
      *  Gain: '<Root>/digital in to err'
-     *  MATLABSystem: '<Root>/Analog Input'
-     * */
-    rtb_Sum = buck_converter_w_feedback_P.Vref_Value - (real32_T)((uint32_T)
-      buck_converter_w_feedback_P.digitalintoerr_Gain * b_varargout_1) *
-      5.96046448E-8F;
+     */
+    buck_converter_w_feedback_B.Sum = buck_converter_w_feedback_P.Vref_Value -
+      (real32_T)buck_converter_w_feedback_B.digitalintoerr * 5.96046448E-8F;
 
     /* Switch: '<S1>/Switch1' incorporates:
      *  Constant: '<S1>/Constant'
      *  Constant: '<S1>/Constant1'
      */
-    if (rtb_Sum > buck_converter_w_feedback_P.Switch1_Threshold_a) {
+    if (buck_converter_w_feedback_B.Sum >
+        buck_converter_w_feedback_P.Switch1_Threshold_a) {
       u0 = buck_converter_w_feedback_P.Constant_Value;
     } else {
       u0 = buck_converter_w_feedback_P.Constant1_Value;
@@ -265,9 +258,24 @@ void buck_converter_w_feedback_step(void)
   MW_PWM_SetDutyCycle
     (buck_converter_w_feedback_DW.obj_h.PWMDriverObj.MW_PWM_HANDLE, u0);
   if (tmp) {
+  }
+
+  /* Integrator: '<S1>/Integrator1' */
+  buck_converter_w_feedback_B.Integrator1 =
+    buck_converter_w_feedback_X.Integrator1_CSTATE;
+  if (tmp) {
+    /* Sum: '<S1>/Subtract' incorporates:
+     *  Constant: '<Root>/Vref'
+     *  Gain: '<Root>/digital in to err'
+     */
+    buck_converter_w_feedback_B.Subtract =
+      buck_converter_w_feedback_P.Vref_Value - (real_T)
+      buck_converter_w_feedback_B.digitalintoerr * 5.9604644775390625E-8;
+
     /* Gain: '<S1>/time constant' */
     buck_converter_w_feedback_B.timeconstant =
-      buck_converter_w_feedback_P.timeconstant_Gain * rtb_Sum;
+      buck_converter_w_feedback_P.timeconstant_Gain *
+      buck_converter_w_feedback_B.Sum;
   }
 
   /* Switch: '<S2>/Switch' incorporates:
@@ -297,6 +305,23 @@ void buck_converter_w_feedback_step(void)
   }
 
   /* End of Switch: '<S2>/Switch' */
+  if (rtmIsMajorTimeStep(buck_converter_w_feedback_M)) {
+    if (rtmIsMajorTimeStep(buck_converter_w_feedback_M)) {/* Sample time: [0.001s, 0.0s] */
+      extmodeErrorCode_T errorCode = EXTMODE_SUCCESS;
+      extmodeSimulationTime_T extmodeTime = (extmodeSimulationTime_T)
+        (((buck_converter_w_feedback_M->Timing.clockTick1+
+           buck_converter_w_feedback_M->Timing.clockTickH1* 4294967296.0)) *
+         0.001);
+
+      /* Trigger External Mode event */
+      errorCode = extmodeEvent(1, extmodeTime);
+      if (errorCode != EXTMODE_SUCCESS) {
+        /* Code to handle External Mode event errors
+           may be added here */
+      }
+    }
+  }                                    /* end MajorTimeStep */
+
   if (rtmIsMajorTimeStep(buck_converter_w_feedback_M)) {
     rt_ertODEUpdateContinuousStates(&buck_converter_w_feedback_M->solverInfo);
 
@@ -343,6 +368,9 @@ void buck_converter_w_feedback_derivatives(void)
 
   /* Derivatives for Integrator: '<S1>/Integrator' */
   _rtXdot->Integrator_CSTATE = buck_converter_w_feedback_B.Switch_n;
+
+  /* Derivatives for Integrator: '<S1>/Integrator1' */
+  _rtXdot->Integrator1_CSTATE = buck_converter_w_feedback_B.Subtract;
 }
 
 /* Model initialize function */
@@ -393,6 +421,8 @@ void buck_converter_w_feedback_initialize(void)
     odeF[1];
   buck_converter_w_feedback_M->intgData.f[2] = buck_converter_w_feedback_M->
     odeF[2];
+  buck_converter_w_feedback_M->intgData.f[3] = buck_converter_w_feedback_M->
+    odeF[3];
   buck_converter_w_feedback_M->contStates = ((X_buck_converter_w_feedback_T *)
     &buck_converter_w_feedback_X);
   buck_converter_w_feedback_M->contStateDisabled =
@@ -400,10 +430,39 @@ void buck_converter_w_feedback_initialize(void)
   buck_converter_w_feedback_M->Timing.tStart = (0.0);
   rtsiSetSolverData(&buck_converter_w_feedback_M->solverInfo, (void *)
                     &buck_converter_w_feedback_M->intgData);
-  rtsiSetSolverName(&buck_converter_w_feedback_M->solverInfo,"ode3");
+  rtsiSetSolverName(&buck_converter_w_feedback_M->solverInfo,"ode4");
   rtmSetTPtr(buck_converter_w_feedback_M,
              &buck_converter_w_feedback_M->Timing.tArray[0]);
+  rtmSetTFinal(buck_converter_w_feedback_M, -1);
   buck_converter_w_feedback_M->Timing.stepSize0 = 0.001;
+
+  /* External mode info */
+  buck_converter_w_feedback_M->Sizes.checksums[0] = (3093469704U);
+  buck_converter_w_feedback_M->Sizes.checksums[1] = (225479897U);
+  buck_converter_w_feedback_M->Sizes.checksums[2] = (304023550U);
+  buck_converter_w_feedback_M->Sizes.checksums[3] = (3619423872U);
+
+  {
+    static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
+    static RTWExtModeInfo rt_ExtModeInfo;
+    static const sysRanDType *systemRan[8];
+    buck_converter_w_feedback_M->extModeInfo = (&rt_ExtModeInfo);
+    rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
+    systemRan[0] = &rtAlwaysEnabled;
+    systemRan[1] = &rtAlwaysEnabled;
+    systemRan[2] = &rtAlwaysEnabled;
+    systemRan[3] = &rtAlwaysEnabled;
+    systemRan[4] = &rtAlwaysEnabled;
+    systemRan[5] = &rtAlwaysEnabled;
+    systemRan[6] = &rtAlwaysEnabled;
+    systemRan[7] = &rtAlwaysEnabled;
+    rteiSetModelMappingInfoPtr(buck_converter_w_feedback_M->extModeInfo,
+      &buck_converter_w_feedback_M->SpecialInfo.mappingInfo);
+    rteiSetChecksumsPtr(buck_converter_w_feedback_M->extModeInfo,
+                        buck_converter_w_feedback_M->Sizes.checksums);
+    rteiSetTPtr(buck_converter_w_feedback_M->extModeInfo, rtmGetTPtr
+                (buck_converter_w_feedback_M));
+  }
 
   /* block I/O */
   (void) memset(((void *) &buck_converter_w_feedback_B), 0,
@@ -430,7 +489,7 @@ void buck_converter_w_feedback_initialize(void)
   buck_converter_w_feedback_DW.objisempty_d = true;
   buck_converter_w_feedback_DW.obj_l.isInitialized = 1;
   buck_converter_w_feedback_DW.obj_l.AnalogInDriverObj.MW_ANALOGIN_HANDLE =
-    MW_AnalogInSingle_Open(26U);
+    MW_AnalogInSingle_Open(28U);
   buck_converter_w_feedback_DW.obj_l.isSetupComplete = true;
 
   /* Start for MATLABSystem: '<Root>/Digital Output' */
@@ -451,6 +510,10 @@ void buck_converter_w_feedback_initialize(void)
   /* InitializeConditions for Integrator: '<S1>/Integrator' */
   buck_converter_w_feedback_X.Integrator_CSTATE =
     buck_converter_w_feedback_P.Integrator_IC;
+
+  /* InitializeConditions for Integrator: '<S1>/Integrator1' */
+  buck_converter_w_feedback_X.Integrator1_CSTATE =
+    buck_converter_w_feedback_P.Integrator1_IC;
 }
 
 /* Model terminate function */
@@ -462,7 +525,7 @@ void buck_converter_w_feedback_terminate(void)
     if ((buck_converter_w_feedback_DW.obj_l.isInitialized == 1) &&
         buck_converter_w_feedback_DW.obj_l.isSetupComplete) {
       buck_converter_w_feedback_DW.obj_l.AnalogInDriverObj.MW_ANALOGIN_HANDLE =
-        MW_AnalogIn_GetHandle(26U);
+        MW_AnalogIn_GetHandle(28U);
       MW_AnalogIn_Close
         (buck_converter_w_feedback_DW.obj_l.AnalogInDriverObj.MW_ANALOGIN_HANDLE);
     }

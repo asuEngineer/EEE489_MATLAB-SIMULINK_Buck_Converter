@@ -2,7 +2,7 @@
 ## Makefile generated for component 'buck_converter_w_feedback'. 
 ## 
 ## Makefile     : buck_converter_w_feedback.mk
-## Generated on : Fri Feb 21 14:08:06 2025
+## Generated on : Wed Feb 26 20:06:58 2025
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/buck_converter_w_feedback.elf
 ## Product type : executable
 ## 
@@ -141,31 +141,46 @@ ECHO                = echo
 MV                  =
 RUN                 =
 
-#--------------------------------------
-# "Faster Runs" Build Configuration
-#--------------------------------------
+#----------------------------------------
+# "Faster Builds" Build Configuration
+#----------------------------------------
 
-ARFLAGS              = rcs
-ASFLAGS              = -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040 -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -Os -u _printf_float -u _scanf_float "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/pico-sdk/src/rp2040/hardware_regs/include/" "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/pico-sdk/src/common/pico_binary_info/include"  $(ASFLAGS_ADDITIONAL) 
-OBJCOPYFLAGS_BIN     = -O binary $(PRODUCT) $(PRODUCT_BIN)
-CFLAGS               = -c -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040  -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -MMD "-iprefix$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/" "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_inc.txt" "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/include" -std=gnu17 -g -pipe  \
-                       -Os
-CPPFLAGS             = -c -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040  -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -MMD "-iprefix$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/" "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_inc.txt" "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/include" -fno-rtti -std=gnu++17 -g -pipe  \
-                       -Os
-CPP_LDFLAGS          =  -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040 -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -Os -u _printf_float -u _scanf_float "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_wrap.txt" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common "-Wl,--script=$(ARDUINO_TARGET_ROOT)/src/rp2040_memmap_default.ld" "-Wl,-Map,$(PRODUCT_NAME).map" -Wl,--no-warn-rwx-segments -Wl,--start-group 
-CPP_SHAREDLIB_LDFLAGS  =
-DOWNLOAD_FLAGS       =
-EXECUTE_FLAGS        =
-LDFLAGS              =  -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040 -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -Os -u _printf_float -u _scanf_float "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_wrap.txt" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common "-Wl,--script=$(ARDUINO_TARGET_ROOT)/src/rp2040_memmap_default.ld" "-Wl,-Map,$(PRODUCT_NAME).map" -Wl,--no-warn-rwx-segments -Wl,--start-group 
 MEX_CPPFLAGS         =
 MEX_CPPLDFLAGS       =
 MEX_CFLAGS           =
 MEX_LDFLAGS          =
-MAKE_FLAGS           = -f $(MAKEFILE)
-SHAREDLIB_LDFLAGS    =
-OBJCOPYFLAGS_UF2     = $(PRODUCT) $(PRODUCT_UF2)
 
 
+
+#---------------------------
+# Model-Specific Options
+#---------------------------
+
+ASFLAGS = -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040 -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -Os -u _printf_float -u _scanf_float "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/pico-sdk/src/rp2040/hardware_regs/include/" "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/pico-sdk/src/common/pico_binary_info/include"  $(ASFLAGS_ADDITIONAL)
+
+CFLAGS = -c -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040  -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -MMD "-iprefix$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/" "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_inc.txt" "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/include" -std=gnu17 -g -pipe  -Os
+
+LDFLAGS = -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040 -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -Os -u _printf_float -u _scanf_float "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_wrap.txt" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common "-Wl,--script=$(ARDUINO_TARGET_ROOT)/src/rp2040_memmap_default.ld" "-Wl,-Map,$(PRODUCT_NAME).map" -Wl,--no-warn-rwx-segments -Wl,--start-group -g
+
+SHAREDLIB_LDFLAGS = -g
+
+CPPFLAGS = -c -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040  -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -MMD "-iprefix$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/" "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_inc.txt" "-I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/include" -fno-rtti -std=gnu++17 -g -pipe  -Os
+
+CPP_LDFLAGS = -Werror=return-type -Wno-psabi -DCFG_TUSB_MCU=OPT_MCU_RP2040 -DUSBD_VID=0x2e8a -DUSBD_MAX_POWER_MA=250 "-DUSB_MANUFACTURER=\"Raspberry Pi\"" -DPICO_CYW43_ARCH_THREADSAFE_BACKGROUND=1 -DCYW43_LWIP=1 -DLWIP_IPV6=0 -DLWIP_IPV4=1 -DLWIP_IGMP=1 -DLWIP_CHECKSUM_CTRL_PER_NETIF=1 -DTARGET_RP2040 -DPICO_FLASH_SIZE_BYTES=2097152 -march=armv6-m -mcpu=cortex-m0plus -mthumb -ffunction-sections -fdata-sections -fno-exceptions -DARM_MATH_CM0_FAMILY -DARM_MATH_CM0_PLUS -Os -u _printf_float -u _scanf_float "@$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/lib/platform_wrap.txt" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common "-Wl,--script=$(ARDUINO_TARGET_ROOT)/src/rp2040_memmap_default.ld" "-Wl,-Map,$(PRODUCT_NAME).map" -Wl,--no-warn-rwx-segments -Wl,--start-group -g
+
+CPP_SHAREDLIB_LDFLAGS = -g
+
+ARFLAGS = rcs
+
+OBJCOPYFLAGS_BIN = -O binary $(PRODUCT) $(PRODUCT_BIN)
+
+OBJCOPYFLAGS_UF2 = $(PRODUCT) $(PRODUCT_UF2)
+
+DOWNLOAD_FLAGS = 
+
+EXECUTE_FLAGS = 
+
+MAKE_FLAGS = -f $(MAKEFILE)
 
 ###########################################################################
 ## OUTPUT INFO
@@ -179,7 +194,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I$(MATLAB_ROOT)/toolbox/target/shared/svd/common/include -IC:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/include -I$(START_DIR)/buck_converter_w_feedback_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/cores/rp2040 -I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/cores/rp2040/sdkoverride -I$(VARIANT_HEADER_PATH) -IC:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/include -IC:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/scheduler/include -I$(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/include -I$(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/include
+INCLUDES_BUILDINFO = -I$(START_DIR) -I$(MATLAB_ROOT)/toolbox/target/shared/svd/common/include -IC:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/include -I$(START_DIR)/buck_converter_w_feedback_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/include -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/include -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/include -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/include -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/include -I$(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src -I$(MATLAB_ROOT)/toolbox/coder/rtiostream/src -I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/cores/rp2040 -I$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/cores/rp2040/sdkoverride -I$(VARIANT_HEADER_PATH) -IC:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/include -IC:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/scheduler/include -I$(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/scheduler/include -I$(MATLAB_ROOT)/toolbox/target/shared/armcortexmbase/xcp/include
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -187,12 +202,12 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -D_ARDUINO_RP2040_ALARM_1_ -DMW_ALARM_RESOLUTION=1000 -DMW_SCHEDULERCOUNTER=1 -DARDUINO_NUM_SERIAL_PORTS=3 -DARDUINO_SERIAL_RECEIVE_BUFFER_SIZE=64 -D_RTT_BAUDRATE_SERIAL0_=9600 -D_RTT_BAUDRATE_SERIAL1_=9600 -D_RTT_BAUDRATE_SERIAL2_=9600 -D_RTT_CONFIG_SERIAL0_=SERIAL_8N1 -D_RTT_CONFIG_SERIAL1_=SERIAL_8N1 -D_RTT_CONFIG_SERIAL2_=SERIAL_8N1 -D_RTT_ANALOG_REF_=0 -DMW_NUM_PINS=26 -D_RTT_PWM_BLOCKS_ -DARDUINO_DEFAULT_PWM_FREQUENCY=200000 -DARDUINO_RP2040_DEFAULT_PWM_PRESCALER=1 -DARDUINO_RP2040_DEFAULT_PWM_PERIOD=664 -D_ONBOARD_EEPROM_SIZE_=0
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
+DEFINES_ = -DXCP_ADDRESS_GRANULARITY=XCP_ADDRESS_GRANULARITY_BYTE -DCODERTARGET_XCP_DAQ_PACKED_MODE -DCODERTARGET_XCP_MAX_CONTIGUOUS_SAMPLES=2 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -D_ARDUINO_RP2040_ALARM_1_ -DMW_ALARM_RESOLUTION=1000 -DMW_SCHEDULERCOUNTER=1 -DARDUINO_NUM_SERIAL_PORTS=3 -DARDUINO_SERIAL_RECEIVE_BUFFER_SIZE=64 -D_RTT_BAUDRATE_SERIAL0_=9600 -D_RTT_BAUDRATE_SERIAL1_=9600 -D_RTT_BAUDRATE_SERIAL2_=9600 -D_RTT_CONFIG_SERIAL0_=SERIAL_8N1 -D_RTT_CONFIG_SERIAL1_=SERIAL_8N1 -D_RTT_CONFIG_SERIAL2_=SERIAL_8N1 -D_RTT_ANALOG_REF_=0 -DMW_RTIO_SERIAL0 -DMW_NUM_PINS=26 -D_RTT_PWM_BLOCKS_ -DARDUINO_DEFAULT_PWM_FREQUENCY=200000 -DARDUINO_RP2040_DEFAULT_PWM_PRESCALER=1 -DARDUINO_RP2040_DEFAULT_PWM_PERIOD=664 -D_ONBOARD_EEPROM_SIZE_=0
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DEXT_MODE=1 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
-DEFINES_OPTS = -DTID01EQ=1
+DEFINES_OPTS = -DXCP_DAQ_SUPPORT -DXCP_CALIBRATION_SUPPORT -DXCP_TIMESTAMP_SUPPORT -DXCP_TIMESTAMP_BASED_ON_SIMULATION_TIME -DXCP_SET_MTA_SUPPORT -DEXTMODE_XCP_TRIGGER_SUPPORT -DXCP_MEM_BLOCK_1_SIZE=32 -DXCP_MEM_BLOCK_1_NUMBER=1 -DXCP_MEM_BLOCK_2_SIZE=56 -DXCP_MEM_BLOCK_2_NUMBER=1 -DXCP_MEM_BLOCK_3_SIZE=40 -DXCP_MEM_BLOCK_3_NUMBER=1 -DXCP_MEM_RESERVED_POOLS_TOTAL_SIZE=867 -DXCP_MEM_RESERVED_POOLS_NUMBER=2 -DXCP_MEM_DAQ_RESERVED_POOL_BLOCKS_NUMBER=3 -DXCP_MEM_DAQ_RESERVED_POOLS_NUMBER=1 -DXCP_MIN_EVENT_NO_RESERVED_POOL=2 -DXCP_MAX_CTO_SIZE=255 -DXCP_MAX_DTO_SIZE=65532 -DXCP_MAX_ODT_ENTRY_SIZE=255 -DEXTMODE_STATIC -DEXTMODE_STATIC_SIZE=65536 -DON_TARGET_WAIT_FOR_START=1 -DTID01EQ=1
 DEFINES_SKIPFORSIL = -DXCP_CUSTOM_PLATFORM -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DSTACK_SIZE=64 -DRT
-DEFINES_STANDARD = -DMODEL=buck_converter_w_feedback -DNUMST=2 -DNCSTATES=1 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
+DEFINES_STANDARD = -DMODEL=buck_converter_w_feedback -DNUMST=2 -DNCSTATES=2 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
 
@@ -200,7 +215,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_AnalogInput.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_arduino_digitalio.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_PWMDriver.c $(START_DIR)/buck_converter_w_feedback_ert_rtw/buck_converter_w_feedback.c $(START_DIR)/buck_converter_w_feedback_ert_rtw/buck_converter_w_feedback_data.c "$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/boot2/boot2_w25q080_2_padded_checksum.S" C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/scheduler/src/arduinoARM_M0plus_RP2040_Scheduler.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/scheduler/src/MW_arduinoNanoRP2040_multitasking.c
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_AnalogInput.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_arduino_digitalio.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_PWMDriver.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c $(START_DIR)/buck_converter_w_feedback_ert_rtw/buck_converter_w_feedback.c $(START_DIR)/buck_converter_w_feedback_ert_rtw/buck_converter_w_feedback_data.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c "$(ARDUINO_RP2040_ROOT)/hardware/rp2040/$(ARDUINO_RP2040_LIB_VERSION)/boot2/boot2_w25q080_2_padded_checksum.S" C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/scheduler/src/arduinoARM_M0plus_RP2040_Scheduler.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/scheduler/src/MW_arduinoNanoRP2040_multitasking.c C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/src/platform_timer.cpp C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/src/rtiostream_serial_daemon.cpp
 
 MAIN_SRC = $(START_DIR)/buck_converter_w_feedback_ert_rtw/ert_main.c
 
@@ -210,7 +225,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_AnalogInput.o ArduinoPinHandleMap.o MW_arduino_digitalio.o MW_PWM.o MW_PWMDriver.o buck_converter_w_feedback.o buck_converter_w_feedback_data.o boot2_w25q080_2_padded_checksum.S.o MW_ArduinoHWInit.o io_wrappers.o arduinoARM_M0plus_RP2040_Scheduler.o MW_arduinoNanoRP2040_multitasking.o
+OBJS = MW_AnalogInput.o ArduinoPinHandleMap.o MW_arduino_digitalio.o MW_PWM.o MW_PWMDriver.o xcp_ext_mode.o buck_converter_w_feedback.o buck_converter_w_feedback_data.o xcp_ext_common.o xcp_ext_classic_trigger.o xcp.o xcp_standard.o xcp_daq.o xcp_calibration.o xcp_fifo.o xcp_transport.o xcp_mem_default.o xcp_drv_rtiostream.o xcp_utils.o xcp_frame_serial.o xcp_ext_param_default_serial.o boot2_w25q080_2_padded_checksum.S.o MW_ArduinoHWInit.o io_wrappers.o arduinoARM_M0plus_RP2040_Scheduler.o MW_arduinoNanoRP2040_multitasking.o platform_timer.o rtiostream_serial_daemon.o
 
 MAIN_OBJ = ert_main.o
 
@@ -247,6 +262,22 @@ CFLAGS_BASIC = $(DEFINES) $(INCLUDES)
 
 CFLAGS += $(CFLAGS_SKIPFORSIL) $(CFLAGS_BASIC)
 
+#-----------
+# Linker
+#-----------
+
+LDFLAGS_ = -L"$(SLIB_PATH)"
+
+LDFLAGS += $(LDFLAGS_)
+
+#--------------------------
+# Shared Library Linker
+#--------------------------
+
+SHAREDLIB_LDFLAGS_ = -L"$(SLIB_PATH)"
+
+SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_)
+
 #-----------------
 # C++ Compiler
 #-----------------
@@ -271,22 +302,6 @@ CPP_LDFLAGS += $(CPP_LDFLAGS_)
 CPP_SHAREDLIB_LDFLAGS_ = -L"$(SLIB_PATH)"
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_)
-
-#-----------
-# Linker
-#-----------
-
-LDFLAGS_ = -L"$(SLIB_PATH)"
-
-LDFLAGS += $(LDFLAGS_)
-
-#--------------------------
-# Shared Library Linker
-#--------------------------
-
-SHAREDLIB_LDFLAGS_ = -L"$(SLIB_PATH)"
-
-SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_)
 
 ###########################################################################
 ## INLINED COMMANDS
@@ -591,6 +606,146 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.S.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
 MW_AnalogInput.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/src/MW_AnalogInput.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
@@ -611,6 +766,10 @@ MW_PWMDriver.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/sup
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
+xcp_ext_mode.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_mode.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
 buck_converter_w_feedback.o : $(START_DIR)/buck_converter_w_feedback_ert_rtw/buck_converter_w_feedback.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
@@ -620,6 +779,58 @@ buck_converter_w_feedback_data.o : $(START_DIR)/buck_converter_w_feedback_ert_rt
 
 
 ert_main.o : $(START_DIR)/buck_converter_w_feedback_ert_rtw/ert_main.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_ext_common.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_common.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_ext_classic_trigger.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_classic_trigger.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_standard.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_standard.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_daq.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_daq.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_calibration.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/protocol/src/xcp_calibration.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_fifo.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_fifo.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_transport.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_transport.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_mem_default.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_mem_default.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_drv_rtiostream.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/platform/default/xcp_drv_rtiostream.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_utils.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/common/xcp_utils.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_frame_serial.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/server/transport/src/xcp_frame_serial.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+xcp_ext_param_default_serial.o : $(MATLAB_ROOT)/toolbox/coder/xcp/src/target/ext_mode/src/xcp_ext_param_default_serial.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -641,6 +852,14 @@ arduinoARM_M0plus_RP2040_Scheduler.o : C:/ProgramData/MATLAB/SupportPackages/R20
 
 MW_arduinoNanoRP2040_multitasking.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/scheduler/src/MW_arduinoNanoRP2040_multitasking.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+platform_timer.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/src/platform_timer.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+rtiostream_serial_daemon.o : C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/src/rtiostream_serial_daemon.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 ###########################################################################

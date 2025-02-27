@@ -1,0 +1,1 @@
+var modelInfo = {model:"buck_converter_w_feedback_alternative"};var modelHierarchy=[{model:"buck_converter_w_feedback_alternative",relativePath:"_internal.html",parent:"null"},];var AddCode = true;var ProtectedModel = false;

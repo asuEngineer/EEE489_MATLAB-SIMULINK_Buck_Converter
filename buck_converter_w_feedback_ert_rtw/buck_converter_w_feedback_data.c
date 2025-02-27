@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter_w_feedback".
  *
- * Model version              : 1.4
+ * Model version              : 1.5
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Fri Feb 21 14:07:56 2025
+ * C source code generated on : Wed Feb 26 20:06:48 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -66,6 +66,11 @@ P_buck_converter_w_feedback_T buck_converter_w_feedback_P = {
    * Referenced by: '<Root>/duty cycle to digital out'
    */
   255.0,
+
+  /* Expression: 0.5
+   * Referenced by: '<S1>/Integrator1'
+   */
+  0.5,
 
   /* Expression: 0
    * Referenced by: '<S2>/Constant'
