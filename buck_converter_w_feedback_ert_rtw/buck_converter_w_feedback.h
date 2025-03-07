@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter_w_feedback".
  *
- * Model version              : 1.5
+ * Model version              : 1.7
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Wed Feb 26 20:06:48 2025
+ * C source code generated on : Fri Mar  7 16:17:32 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,11 +23,8 @@
 #ifndef buck_converter_w_feedback_COMMON_INCLUDES_
 #define buck_converter_w_feedback_COMMON_INCLUDES_
 #include "rtwtypes.h"
-#include "rtw_extmode.h"
-#include "sysran_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
-#include "ext_mode.h"
 #include "MW_AnalogIn.h"
 #include "MW_arduino_digitalio.h"
 #include "MW_PWM.h"
@@ -35,6 +32,7 @@
 
 #include "buck_converter_w_feedback_types.h"
 #include <string.h>
+#include <stddef.h>
 #include "MW_target_hardware_resources.h"
 
 /* Macros for accessing real-time model data structure */
@@ -68,10 +66,6 @@
 
 #ifndef rtmSetDerivCacheNeedsReset
 #define rtmSetDerivCacheNeedsReset(rtm, val) ((rtm)->derivCacheNeedsReset = (val))
-#endif
-
-#ifndef rtmGetFinalTime
-#define rtmGetFinalTime(rtm)           ((rtm)->Timing.tFinal)
 #endif
 
 #ifndef rtmGetIntgData
@@ -114,10 +108,6 @@
 #define rtmSetPeriodicContStateRanges(rtm, val) ((rtm)->periodicContStateRanges = (val))
 #endif
 
-#ifndef rtmGetRTWExtModeInfo
-#define rtmGetRTWExtModeInfo(rtm)      ((rtm)->extModeInfo)
-#endif
-
 #ifndef rtmGetZCCacheNeedsReset
 #define rtmGetZCCacheNeedsReset(rtm)   ((rtm)->zCCacheNeedsReset)
 #endif
@@ -158,10 +148,6 @@
 #define rtmGetT(rtm)                   (rtmGetTPtr((rtm))[0])
 #endif
 
-#ifndef rtmGetTFinal
-#define rtmGetTFinal(rtm)              ((rtm)->Timing.tFinal)
-#endif
-
 #ifndef rtmGetTPtr
 #define rtmGetTPtr(rtm)                ((rtm)->Timing.t)
 #endif
@@ -173,44 +159,37 @@
 /* Block signals (default storage) */
 typedef struct {
   real_T Switch;                       /* '<S3>/Switch' */
-  real_T Integrator1;                  /* '<S1>/Integrator1' */
-  real_T Subtract;                     /* '<S1>/Subtract' */
   real_T Switch_n;                     /* '<S2>/Switch' */
-  uint32_T digitalintoerr;             /* '<Root>/digital in to err' */
-  real32_T Sum;                        /* '<S1>/Sum' */
-  real32_T timeconstant;               /* '<S1>/time constant' */
+  real32_T Vtimeconstant;              /* '<S1>/V time constant' */
 } B_buck_converter_w_feedback_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  codertarget_arduinobase_block_T obj; /* '<Root>/Digital Output' */
+  codertarget_arduinobase_block_T obj; /* '<Root>/LED' */
   codertarget_arduinobase_inter_T obj_l;/* '<Root>/Analog Input' */
-  codertarget_arduinobase_int_i_T obj_h;/* '<Root>/PWM' */
+  codertarget_arduinobase_int_i_T obj_h;/* '<Root>/PWM_' */
   struct {
     void *LoggedData;
   } Scope_PWORK;                       /* '<Root>/Scope' */
 
-  boolean_T objisempty;                /* '<Root>/PWM' */
-  boolean_T objisempty_p;              /* '<Root>/Digital Output' */
+  boolean_T objisempty;                /* '<Root>/PWM_' */
+  boolean_T objisempty_p;              /* '<Root>/LED' */
   boolean_T objisempty_d;              /* '<Root>/Analog Input' */
 } DW_buck_converter_w_feedback_T;
 
 /* Continuous states (default storage) */
 typedef struct {
   real_T Integrator_CSTATE;            /* '<S1>/Integrator' */
-  real_T Integrator1_CSTATE;           /* '<S1>/Integrator1' */
 } X_buck_converter_w_feedback_T;
 
 /* State derivatives (default storage) */
 typedef struct {
   real_T Integrator_CSTATE;            /* '<S1>/Integrator' */
-  real_T Integrator1_CSTATE;           /* '<S1>/Integrator1' */
 } XDot_buck_converter_w_feedbac_T;
 
 /* State disabled  */
 typedef struct {
   boolean_T Integrator_CSTATE;         /* '<S1>/Integrator' */
-  boolean_T Integrator1_CSTATE;        /* '<S1>/Integrator1' */
 } XDis_buck_converter_w_feedbac_T;
 
 #ifndef ODE4_INTG
@@ -253,9 +232,6 @@ struct P_buck_converter_w_feedback_T_ {
   real_T dutycycletodigitalout_Gain;   /* Expression: 255
                                         * Referenced by: '<Root>/duty cycle to digital out'
                                         */
-  real_T Integrator1_IC;               /* Expression: 0.5
-                                        * Referenced by: '<S1>/Integrator1'
-                                        */
   real_T Constant_Value_o;             /* Expression: 0
                                         * Referenced by: '<S2>/Constant'
                                         */
@@ -271,18 +247,17 @@ struct P_buck_converter_w_feedback_T_ {
   real32_T Switch1_Threshold_a;       /* Computed Parameter: Switch1_Threshold_a
                                        * Referenced by: '<S1>/Switch1'
                                        */
-  real32_T timeconstant_Gain;          /* Computed Parameter: timeconstant_Gain
-                                        * Referenced by: '<S1>/time constant'
+  real32_T Vtimeconstant_Gain;         /* Computed Parameter: Vtimeconstant_Gain
+                                        * Referenced by: '<S1>/V time constant'
                                         */
-  uint16_T digitalintoerr_Gain;       /* Computed Parameter: digitalintoerr_Gain
-                                       * Referenced by: '<Root>/digital in to err'
-                                       */
+  uint16_T VoutDtoA_Gain;              /* Computed Parameter: VoutDtoA_Gain
+                                        * Referenced by: '<Root>/Vout D to A'
+                                        */
 };
 
 /* Real-time Model Data Structure */
 struct tag_RTM_buck_converter_w_feed_T {
   const char_T *errorStatus;
-  RTWExtModeInfo *extModeInfo;
   RTWSolverInfo solverInfo;
   X_buck_converter_w_feedback_T *contStates;
   int_T *periodicContStateIndices;
@@ -292,8 +267,8 @@ struct tag_RTM_buck_converter_w_feed_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[2];
-  real_T odeF[4][2];
+  real_T odeY[1];
+  real_T odeF[4][1];
   ODE4_IntgData intgData;
 
   /*
@@ -303,20 +278,10 @@ struct tag_RTM_buck_converter_w_feed_T {
    * dwork, sample times, etc.
    */
   struct {
-    uint32_T checksums[4];
     int_T numContStates;
     int_T numPeriodicContStates;
     int_T numSampTimes;
   } Sizes;
-
-  /*
-   * SpecialInfo:
-   * The following substructure contains special information
-   * related to other components that are dependent on RTW.
-   */
-  struct {
-    const void *mappingInfo;
-  } SpecialInfo;
 
   /*
    * Timing:
@@ -330,7 +295,6 @@ struct tag_RTM_buck_converter_w_feed_T {
     uint32_T clockTick1;
     uint32_T clockTickH1;
     time_T tStart;
-    time_T tFinal;
     SimTimeStep simTimeStep;
     boolean_T stopRequestedFlag;
     time_T *t;
@@ -362,6 +326,14 @@ extern void buck_converter_w_feedback_terminate(void);
 extern RT_MODEL_buck_converter_w_fee_T *const buck_converter_w_feedback_M;
 extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
+
+/*-
+ * These blocks were eliminated from the model due to optimizations:
+ *
+ * Block '<S1>/Display' : Unused code path elimination
+ * Block '<S1>/Display1' : Unused code path elimination
+ * Block '<S1>/Display2' : Unused code path elimination
+ */
 
 /*-
  * The generated code includes comments that allow you to trace directly

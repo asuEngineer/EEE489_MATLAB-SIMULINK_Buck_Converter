@@ -3,14 +3,10 @@ buck_converter_w_feedback.o: \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_w_feedback_ert_rtw/buck_converter_w_feedback.h \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_w_feedback_ert_rtw/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2024b/extern/include/tmwtypes.h \
- C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_extmode.h \
- C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_w_feedback_ert_rtw/rtwtypes.h \
- C:/PROGRA~1/MATLAB/R2024b/simulink/include/sysran_types.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
+ C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_w_feedback_ert_rtw/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_solver.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
- C:/PROGRA~1/MATLAB/R2024b/toolbox/coder/xcp/src/target/ext_mode/include/ext_mode.h \
- C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_w_feedback_ert_rtw/ext_mode_types.h \
  C:/PROGRA~1/MATLAB/R2024b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h \
  C:/PROGRA~1/MATLAB/R2024b/toolbox/target/shared/svd/common/include/MW_SVD.h \
  C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinobase/include/MW_arduino_digitalio.h \

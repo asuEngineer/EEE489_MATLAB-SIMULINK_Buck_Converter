@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter_w_feedback".
  *
- * Model version              : 1.5
+ * Model version              : 1.7
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Wed Feb 26 20:06:48 2025
+ * C source code generated on : Fri Mar  7 16:17:32 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -67,11 +67,6 @@ P_buck_converter_w_feedback_T buck_converter_w_feedback_P = {
    */
   255.0,
 
-  /* Expression: 0.5
-   * Referenced by: '<S1>/Integrator1'
-   */
-  0.5,
-
   /* Expression: 0
    * Referenced by: '<S2>/Constant'
    */
@@ -90,20 +85,20 @@ P_buck_converter_w_feedback_T buck_converter_w_feedback_P = {
   /* Computed Parameter: Vref_Value
    * Referenced by: '<Root>/Vref'
    */
-  3.5F,
+  5.0F,
 
   /* Computed Parameter: Switch1_Threshold_a
    * Referenced by: '<S1>/Switch1'
    */
   0.0F,
 
-  /* Computed Parameter: timeconstant_Gain
-   * Referenced by: '<S1>/time constant'
+  /* Computed Parameter: Vtimeconstant_Gain
+   * Referenced by: '<S1>/V time constant'
    */
   0.5F,
 
-  /* Computed Parameter: digitalintoerr_Gain
-   * Referenced by: '<Root>/digital in to err'
+  /* Computed Parameter: VoutDtoA_Gain
+   * Referenced by: '<Root>/Vout D to A'
    */
   63579U
 };

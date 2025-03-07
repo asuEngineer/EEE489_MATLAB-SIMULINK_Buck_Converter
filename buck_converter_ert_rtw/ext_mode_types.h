@@ -5,11 +5,11 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * Code generation for model "buck_converter_w_feedback".
+ * Code generation for model "buck_converter".
  *
- * Model version              : 1.5
+ * Model version              : 1.4
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Wed Feb 26 20:06:48 2025
+ * C source code generated on : Fri Mar  7 11:59:27 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -44,7 +44,7 @@ typedef real_T extmodeClassicTriggerSignal_T;
 #define XCP_UINT32_MAX                 0xFFFFFFFFU
 
 /** External Mode Base rate event id */
-#define EXTMODE_BASE_RATE_EVENT_ID     1
+#define EXTMODE_BASE_RATE_EVENT_ID     0
 
 /** External Mode Max Event Id */
 #define EXTMODE_MAX_EVENT_ID           0xFF

@@ -4,7 +4,7 @@
  * Code generation for Simulink model "buck_converter".
  *
  * Simulink Coder version                : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Fri Feb 21 13:32:16 2025
+ * C source code generated on : Fri Mar  7 11:59:27 2025
  *
  * Note that the generated code is not dependent on this header file.
  * The file is used in cojuction with the automatic build procedure.
@@ -16,9 +16,4 @@
 #ifndef rtmodel_h_
 #define rtmodel_h_
 #include "buck_converter.h"
-
-/* Macros generated for backwards compatibility  */
-#ifndef rtmGetStopRequested
-#define rtmGetStopRequested(rtm)       ((void*) 0)
-#endif
 #endif                                 /* rtmodel_h_ */

@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter".
  *
- * Model version              : 1.2
+ * Model version              : 1.4
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Fri Feb 21 13:32:16 2025
+ * C source code generated on : Fri Mar  7 11:59:27 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,6 +23,8 @@
 #ifndef buck_converter_COMMON_INCLUDES_
 #define buck_converter_COMMON_INCLUDES_
 #include "rtwtypes.h"
+#include "rtw_extmode.h"
+#include "sysran_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
 #include "MW_AnalogIn.h"
@@ -30,11 +32,18 @@
 #endif                                 /* buck_converter_COMMON_INCLUDES_ */
 
 #include "buck_converter_types.h"
-#include <stddef.h>
 #include <string.h>
 #include "MW_target_hardware_resources.h"
 
 /* Macros for accessing real-time model data structure */
+#ifndef rtmGetFinalTime
+#define rtmGetFinalTime(rtm)           ((rtm)->Timing.tFinal)
+#endif
+
+#ifndef rtmGetRTWExtModeInfo
+#define rtmGetRTWExtModeInfo(rtm)      ((rtm)->extModeInfo)
+#endif
+
 #ifndef rtmGetErrorStatus
 #define rtmGetErrorStatus(rtm)         ((rtm)->errorStatus)
 #endif
@@ -43,14 +52,39 @@
 #define rtmSetErrorStatus(rtm, val)    ((rtm)->errorStatus = (val))
 #endif
 
+#ifndef rtmGetStopRequested
+#define rtmGetStopRequested(rtm)       ((rtm)->Timing.stopRequestedFlag)
+#endif
+
+#ifndef rtmSetStopRequested
+#define rtmSetStopRequested(rtm, val)  ((rtm)->Timing.stopRequestedFlag = (val))
+#endif
+
+#ifndef rtmGetStopRequestedPtr
+#define rtmGetStopRequestedPtr(rtm)    (&((rtm)->Timing.stopRequestedFlag))
+#endif
+
+#ifndef rtmGetT
+#define rtmGetT(rtm)                   ((rtm)->Timing.taskTime0)
+#endif
+
+#ifndef rtmGetTFinal
+#define rtmGetTFinal(rtm)              ((rtm)->Timing.tFinal)
+#endif
+
+#ifndef rtmGetTPtr
+#define rtmGetTPtr(rtm)                (&(rtm)->Timing.taskTime0)
+#endif
+
+/* Block signals (default storage) */
+typedef struct {
+  uint16_T AnalogInput;                /* '<Root>/Analog Input' */
+} B_buck_converter_T;
+
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   codertarget_arduinobase_inter_T obj; /* '<Root>/Analog Input' */
   codertarget_arduinobase_int_m_T obj_h;/* '<Root>/PWM' */
-  struct {
-    void *LoggedData;
-  } Scope_PWORK;                       /* '<Root>/Scope' */
-
   boolean_T objisempty;                /* '<Root>/PWM' */
   boolean_T objisempty_d;              /* '<Root>/Analog Input' */
 } DW_buck_converter_T;
@@ -68,10 +102,47 @@ struct P_buck_converter_T_ {
 /* Real-time Model Data Structure */
 struct tag_RTM_buck_converter_T {
   const char_T *errorStatus;
+  RTWExtModeInfo *extModeInfo;
+
+  /*
+   * Sizes:
+   * The following substructure contains sizes information
+   * for many of the model attributes such as inputs, outputs,
+   * dwork, sample times, etc.
+   */
+  struct {
+    uint32_T checksums[4];
+  } Sizes;
+
+  /*
+   * SpecialInfo:
+   * The following substructure contains special information
+   * related to other components that are dependent on RTW.
+   */
+  struct {
+    const void *mappingInfo;
+  } SpecialInfo;
+
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    time_T taskTime0;
+    uint32_T clockTick0;
+    uint32_T clockTickH0;
+    time_T stepSize0;
+    time_T tFinal;
+    boolean_T stopRequestedFlag;
+  } Timing;
 };
 
 /* Block parameters (default storage) */
 extern P_buck_converter_T buck_converter_P;
+
+/* Block signals (default storage) */
+extern B_buck_converter_T buck_converter_B;
 
 /* Block states (default storage) */
 extern DW_buck_converter_T buck_converter_DW;

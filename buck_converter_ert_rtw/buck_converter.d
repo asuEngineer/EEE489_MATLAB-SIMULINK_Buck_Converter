@@ -3,8 +3,10 @@ buck_converter.o: \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/buck_converter.h \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2024b/extern/include/tmwtypes.h \
- C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_extmode.h \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/rtwtypes.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/sysran_types.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_solver.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
  C:/PROGRA~1/MATLAB/R2024b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h \
@@ -61,4 +63,6 @@ buck_converter.o: \
  c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2_common\pico_stdio\include\pico\stdio.h \
  c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2_common\hardware_timer\include\hardware\timer.h \
  c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2040\hardware_structs\include\hardware\structs\timer.h \
- c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2040\hardware_regs\include\hardware\regs\timer.h
+ c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2040\hardware_regs\include\hardware\regs\timer.h \
+ C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/buck_converter_private.h \
+ C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/multiword_types.h

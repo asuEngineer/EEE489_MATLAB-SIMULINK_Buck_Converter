@@ -3,8 +3,10 @@ buck_converter_data.o: \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/buck_converter.h \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2024b/extern/include/tmwtypes.h \
- C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_extmode.h \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/rtwtypes.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/sysran_types.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_solver.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
  C:/PROGRA~1/MATLAB/R2024b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h \

@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter_w_feedback".
  *
- * Model version              : 1.5
+ * Model version              : 1.7
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Wed Feb 26 20:06:48 2025
+ * C source code generated on : Fri Mar  7 16:17:32 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

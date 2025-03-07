@@ -3,8 +3,10 @@ ert_main.o: \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/buck_converter.h \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2024b/extern/include/tmwtypes.h \
- C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_extmode.h \
  C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/rtwtypes.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/sysran_types.h \
+ C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_solver.h \
  C:/PROGRA~1/MATLAB/R2024b/simulink/include/rtw_continuous.h \
  C:/PROGRA~1/MATLAB/R2024b/toolbox/target/shared/svd/common/include/MW_AnalogIn.h \
@@ -61,4 +63,10 @@ ert_main.o: \
  c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2_common\pico_stdio\include\pico\stdio.h \
  c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2_common\hardware_timer\include\hardware\timer.h \
  c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2040\hardware_structs\include\hardware\structs\timer.h \
- c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2040\hardware_regs\include\hardware\regs\timer.h
+ c:\programdata\matlab\supportpackages\r2024b\acli\data\packages\rp2040\hardware\rp2040\3.7.0\pico-sdk\src\rp2040\hardware_regs\include\hardware\regs\timer.h \
+ C:/PROGRA~1/MATLAB/R2024b/toolbox/coder/xcp/src/target/server/include/xcp.h \
+ C:/PROGRA~1/MATLAB/R2024b/toolbox/coder/xcp/src/target/server/common/xcp_common.h \
+ C:/PROGRA~1/MATLAB/R2024b/toolbox/coder/xcp/src/target/server/platform/include/xcp_platform.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2024b/toolbox/target/supportpackages/arduinotarget/include/xcp_platform_custom.h \
+ C:/PROGRA~1/MATLAB/R2024b/toolbox/coder/xcp/src/target/ext_mode/include/ext_mode.h \
+ C:/Users/burly/OneDrive/Desktop/matlab_buck_converter_EEE489/buck_converter_ert_rtw/ext_mode_types.h

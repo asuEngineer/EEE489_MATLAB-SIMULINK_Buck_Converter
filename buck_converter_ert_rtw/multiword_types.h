@@ -7,9 +7,9 @@
  *
  * Code generation for model "buck_converter".
  *
- * Model version              : 1.2
+ * Model version              : 1.4
  * Simulink Coder version : 24.2 (R2024b) 21-Jun-2024
- * C source code generated on : Fri Feb 21 13:32:16 2025
+ * C source code generated on : Fri Mar  7 11:59:27 2025
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -21,6 +21,12 @@
 #ifndef MULTIWORD_TYPES_H
 #define MULTIWORD_TYPES_H
 #include "rtwtypes.h"
+
+/*
+ * Definitions supporting external data access
+ */
+typedef int32_T chunk_T;
+typedef uint32_T uchunk_T;
 
 /*
  * MultiWord supporting definitions

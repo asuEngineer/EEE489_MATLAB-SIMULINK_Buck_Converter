@@ -368,21 +368,6 @@ Parameters for &lt;Root&gt;/duty cycle to digital out
 } buck_converter_w_feedback_P;</code>
 </div>
 </div>
-<div id="fcn_buck_converter_w_feedback_P.Integrator1_IC">
-<h4 class="function">
-buck_converter_w_feedback_P.Integrator1_IC
-</h4>
-<span class="description">
-Parameters for &lt;S1&gt;/Integrator1
-</span>
-<div class="programlisting">
-<code class="usage">struct {
-  ...
-  real_T Integrator1_IC;
-  ...
-} buck_converter_w_feedback_P;</code>
-</div>
-</div>
 <div id="fcn_buck_converter_w_feedback_P.Constant_Value_o">
 <h4 class="function">
 buck_converter_w_feedback_P.Constant_Value_o
@@ -458,32 +443,32 @@ Parameters for &lt;S1&gt;/Switch1
 } buck_converter_w_feedback_P;</code>
 </div>
 </div>
-<div id="fcn_buck_converter_w_feedback_P.timeconstant_Gain">
+<div id="fcn_buck_converter_w_feedback_P.Vtimeconstant_Gain">
 <h4 class="function">
-buck_converter_w_feedback_P.timeconstant_Gain
+buck_converter_w_feedback_P.Vtimeconstant_Gain
 </h4>
 <span class="description">
-Parameters for &lt;S1&gt;/time constant
+Parameters for &lt;S1&gt;/V time constant
 </span>
 <div class="programlisting">
 <code class="usage">struct {
   ...
-  real32_T timeconstant_Gain;
+  real32_T Vtimeconstant_Gain;
   ...
 } buck_converter_w_feedback_P;</code>
 </div>
 </div>
-<div id="fcn_buck_converter_w_feedback_P.digitalintoerr_Gain">
+<div id="fcn_buck_converter_w_feedback_P.VoutDtoA_Gain">
 <h4 class="function">
-buck_converter_w_feedback_P.digitalintoerr_Gain
+buck_converter_w_feedback_P.VoutDtoA_Gain
 </h4>
 <span class="description">
-Parameters for &lt;Root&gt;/digital in to err
+Parameters for &lt;Root&gt;/Vout D to A
 </span>
 <div class="programlisting">
 <code class="usage">struct {
   ...
-  uint16_T digitalintoerr_Gain;
+  uint16_T VoutDtoA_Gain;
   ...
 } buck_converter_w_feedback_P;</code>
 </div>
